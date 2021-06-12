@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>poparound Tests</title>
+    <style>
+        html, *, *:before, *:after {
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .layout {
+            display:grid;
+            grid-template-rows: auto 1fr auto;
+            height:100vh;
+        }
+        .popup {
+            background:yellow;
+        }
+        .menu {
+            display:flex;
+            justify-content: space-between;
+        }
+    </style>
+    <script src="../min.js"></script>
+</head>
+<body>
+<div class="layout">
+    <div>top</div>
+    <div>middle</div>
+    <div class="menu">
+        <a id="left" href="#">Left</a>
+        <a id="middle" href="#">Middle</a>
+        <a id="right" href="#">Right</a>
+    </div>
+</div>
+<div id="popup" class="popup"></div>
+<script type="module">
+  import poparound from './../index.js';
+  const popupCallback=(el,popupEl)=>{
+    popupEl.innerHTML=el.id+el.id;
+  };
+  poparound([left,middle,right], popup, popupCallback);
+</script>
+</body>
+</html>
